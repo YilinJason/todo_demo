@@ -1,0 +1,45 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: white;
+    user-select: none;
+}
+
+#root,
+.App {
+    height: 100%;
+}
+
+.ant-layout.ant-layout-has-sider.css-dev-only-do-not-override-mzwlov {
+    height: 100%;
+}
+
+img {
+    -webkit-user-drag: none;
+}
+
+.demo-logo-vertical-title {
+    text-align: center;
+    font-size: 2em;
+    /* Adjust this value to suit your needs */
+    width: 100%;
+}
+
+.ant-layout ant-layout-has-sider css-dev-only-do-not-override-mzwlov .site-layout .site-layout-background {
+    background: white;
+}
+
+.ant-layout-sider-children {
+    height: 100%;
+}
+
+.ant-layout-sider.ant-layout-sider-dark {
+    flex: 0 0 250px;
+    max-width: 250px;
+    width: 250px;
+}

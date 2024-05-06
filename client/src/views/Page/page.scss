@@ -1,0 +1,31 @@
+.pipeData {
+    transform: scale(0.8);
+    margin-top: -20px;
+}
+
+.valueDisplay {
+    margin-top: 100px;
+    margin-left: -150px;
+    text-align: left;
+    transform: scale(1.5);
+}
+
+.total-value {
+    display: block;
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.pieData {
+    margin-right: 600px;
+}
+
+.divider {
+    height: 1px;
+    /* 调整线的高度，你可以根据需要调整这个值 */
+    background-color: #000;
+    /* 调整线的颜色，你可以根据需要调整这个值 */
+    margin: 10px 0;
+    /* 调整线的上下间距，你可以根据需要调整这个值 */
+}
