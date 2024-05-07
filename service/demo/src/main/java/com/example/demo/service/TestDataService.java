@@ -27,7 +27,7 @@ public class TestDataService {
         data.setCreatDate(new Date());
         data.setEventStatus("Pending");
         data.setEventName(req.getEventName());
-        data.setDescription(req.getEventDescription());
+        data.setDescription(req.getDescription());
         data.setEndDate(req.getEndDate());
         data.setUserId(req.getUserId());
         return repository.save(data);

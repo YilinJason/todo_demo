@@ -6,7 +6,7 @@ public class AddEventByUserReq {
 
     private String userId;
     private String eventName;
-    private String eventDescription;
+    private String description;
     private Date endDate;
 
     public String getUserId() {
@@ -17,8 +17,8 @@ public class AddEventByUserReq {
         return eventName;
     }
 
-    public String getEventDescription() {
-        return eventDescription;
+    public String getDescription() {
+        return description;
     }
 
     public Date getEndDate() {
@@ -33,8 +33,8 @@ public class AddEventByUserReq {
         this.eventName = eventName;
     }
 
-    public void setEventDescription(String eventDescription) {
-        this.eventDescription = eventDescription;
+    public void setEventDescription(String description) {
+        this.description = description;
     }
 
     public void setEndDate(Date endDate) {
