@@ -32,6 +32,11 @@ public class TestDataService {
         return repository.findAll();
     }
 
+    // get all data by userId
+    public List<TestData> findByUserId(String userId) {
+        return repository.findByUserId(userId);
+    }
+
     // list events by events' name
     public List<TestData> getEventByName(String name) {
         return repository.findByEventName(name);

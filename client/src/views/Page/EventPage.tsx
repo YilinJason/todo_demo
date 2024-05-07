@@ -4,6 +4,7 @@ import { Table, Button, Space, Input, Modal, Form, DatePicker } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
 
 
 
@@ -155,7 +156,11 @@ const EventPage: React.FC = () => {
 
   // get all data from database
   function getAllData() {
-    axios.get('http://localhost:8080/event/getall')
+    axios.get('http://localhost:8080/event/getbyuser', {
+      params: {
+        userId: localStorage.getItem('userId')
+      }
+    })
       .then((response) => {
         console.log(response.data);
         setData(response.data);
@@ -274,7 +279,12 @@ const EventPage: React.FC = () => {
                 label="End Date"
                 rules={[{ required: true, message: 'Please select the end date!' }]}
               >
-                <DatePicker />
+                <DatePicker 
+                  disabledDate={(current) => {
+                    let customDate = moment().format("YYYY-MM-DD");
+                    return current && current < moment(customDate, "YYYY-MM-DD");
+                  }} 
+                />
               </Form.Item>
             </Form>
           </Modal>

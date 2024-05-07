@@ -9,6 +9,8 @@ import java.util.List;
 
 public interface TestDataRepository extends MongoRepository<TestData, String> {
 
+    List<TestData> findByUserId(String userId);
+
     List<TestData> findByEventName(String name);
 
     List<TestData> findByEndDateBetween(Date from, Date to);

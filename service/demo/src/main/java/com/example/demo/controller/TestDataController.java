@@ -27,6 +27,11 @@ public class TestDataController {
         return service.listAllEvent();
     }
 
+    @GetMapping("/getbyuser")
+    public List<TestData> findByUserId(@RequestParam String userId) {
+        return service.findByUserId(userId);
+    }
+
     @GetMapping("/getbyname/{name}")
     public List<TestData> getEventByName(@PathVariable String name) {
         return service.getEventByName(name);

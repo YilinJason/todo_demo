@@ -15,6 +15,7 @@ import java.util.Date;
 public class TestData {
     @Id
     private String eventId;
+    private String userId;
     private String eventName;
     private String description;
     private String eventStatus;
@@ -23,6 +24,10 @@ public class TestData {
 
     public void setEventId(String eventId) {
         this.eventId = eventId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public void setEventStatus(String eventStatus) {
@@ -47,6 +52,10 @@ public class TestData {
 
     public String getEventId() {
         return eventId;
+    }
+
+    public String getUserId() {
+        return userId;
     }
 
     public String getEventStatus() {
