@@ -75,7 +75,7 @@ const HomePage: React.FC = () => {
 
   // get all data from database
   function getUpcomingData() {
-    axios.get('http://localhost:8080/event/getbytime')
+    axios.get(`http://localhost:8080/event/getbytime/${localStorage.getItem("userId")}`)
       .then((response) => {
         console.log(response.data);
         setData(response.data);

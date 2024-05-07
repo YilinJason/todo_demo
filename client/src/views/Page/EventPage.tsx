@@ -156,18 +156,19 @@ const EventPage: React.FC = () => {
 
   // get all data from database
   function getAllData() {
-    axios.get('http://localhost:8080/event/getbyuser', {
-      params: {
+    if(localStorage.getItem('userId') != null) {
+      const eventData = {
         userId: localStorage.getItem('userId')
-      }
-    })
-      .then((response) => {
-        console.log(response.data);
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      };
+      axios.get('http://localhost:8080/event/getall', { params: eventData })
+        .then((response) => {
+          console.log(response.data);
+          setData(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   }
 
   // add event to the database
@@ -177,6 +178,7 @@ const EventPage: React.FC = () => {
       eventName: values.eventName,
       description: values.description,
       endDate: values.endDate,
+      userId: localStorage.getItem('userId')
     };
     axios.post('http://localhost:8080/event/add', eventData)
       .then(response => {

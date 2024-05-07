@@ -1,6 +1,7 @@
 package com.example.demo.service;
 
 
+import com.example.demo.Response.UserLogInRes;
 import com.example.demo.module.User;
 import com.example.demo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,17 +48,20 @@ public class UserService {
         return repository.findByEmail(email);
     }
 
-    public String logIn(User user) {
-        User target = findUserByEmail(user.getEmail());
-        if(target != null) {
-            Boolean isMatch = passwordEncoder.matches(user.getPassword(), target.getPassword());
-            if(isMatch){
-                return target.getUserName();
+    public UserLogInRes logIn(User user) {
+        UserLogInRes res = new UserLogInRes();
+        try {
+            User target = findUserByEmail(user.getEmail());
+            if(target != null) {
+                Boolean isMatch = passwordEncoder.matches(user.getPassword(), target.getPassword());
+                if(isMatch){
+                    res.setUserId(target.getUserId());
+                    res.setUserName(target.getUserName());
+                }
             }
-            return "Your input password is wrong, please try it again.";
+        } catch (Exception e) {
+            throw new RuntimeException(e.getMessage());
         }
-        else {
-            return "Your input email is wrong, please try it again.";
-        }
+        return res;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.Requests.AddEventByUserReq;
 import com.example.demo.module.TestData;
 import com.example.demo.service.TestDataService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,18 +19,13 @@ public class TestDataController {
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public TestData addEvent(@RequestBody TestData data) {
+    public TestData addEvent(@RequestBody AddEventByUserReq data) {
         return service.addEvent(data);
     }
 
     @GetMapping("/getall")
-    public List<TestData> listAllEvent() {
-        return service.listAllEvent();
-    }
-
-    @GetMapping("/getbyuser")
-    public List<TestData> findByUserId(@RequestParam String userId) {
-        return service.findByUserId(userId);
+    public List<TestData> listAllEvent(TestData data) {
+        return service.listAllEvent(data);
     }
 
     @GetMapping("/getbyname/{name}")
@@ -37,9 +33,9 @@ public class TestDataController {
         return service.getEventByName(name);
     }
 
-    @GetMapping("/getbytime")
-    public List<TestData> findByEndDateBetween() {
-        return service.findByEndDateBetween();
+    @GetMapping("/getbytime/{userId}")
+    public List<TestData> findByEndDateBetween(@PathVariable String userId) {
+        return service.findByEndDateBetween(userId);
     }
 
     @GetMapping("/getbynamelike/{name}")

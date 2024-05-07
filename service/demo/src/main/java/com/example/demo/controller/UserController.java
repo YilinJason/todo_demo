@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 
+import com.example.demo.Response.UserLogInRes;
 import com.example.demo.module.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String logIn(@RequestBody User user) {
+    public UserLogInRes logIn(@RequestBody User user) {
         return service.logIn(user);
     }
 }

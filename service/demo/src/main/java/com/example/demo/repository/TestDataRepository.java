@@ -13,7 +13,7 @@ public interface TestDataRepository extends MongoRepository<TestData, String> {
 
     List<TestData> findByEventName(String name);
 
-    List<TestData> findByEndDateBetween(Date from, Date to);
+    List<TestData> findByUserIdAndEndDateBetween(String userId, Date from, Date to);
 
     @Query(value = "{ 'fieldName' : { $regex: ?0, $options: 'i' } }")
     List<TestData> findByEventNameLikeIgnoreCase(String name);

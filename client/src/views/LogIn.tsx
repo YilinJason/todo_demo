@@ -30,15 +30,8 @@ const LogIn: React.FC = () => {
                 axios.post('http://localhost:8080/user/login', user)
                     .then((response) => {
                         console.log(response.data);
-                        if (response.data === "Your input email is wrong, please try it again.") {
-                            alert("Your input email is wrong, please try it again.");
-                            return;
-                        }
-                        else if (response.data === "Your input password is wrong, please try it again.") {
-                            alert("Your input password is wrong, please try it again.");
-                            return;
-                        }
-                        localStorage.setItem("userName", response.data);
+                        localStorage.setItem("userName", response.data.userName);
+                        localStorage.setItem("userId", response.data.userId);
                         navigate("/HomePage");
                     })
             }

@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.Requests.AddEventByUserReq;
 import com.example.demo.module.TestData;
 import com.example.demo.repository.TestDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +21,22 @@ public class TestDataService {
     private MongoTemplate mongoTemplate;
 
     // add new Event
-    public TestData addEvent(TestData data) {
+    public TestData addEvent(AddEventByUserReq req) {
+        TestData data = new TestData();
         data.setEventId(UUID.randomUUID().toString().split("-")[0]);
         data.setCreatDate(new Date());
         data.setEventStatus("Pending");
+        data.setEventName(req.getEventName());
+        data.setDescription(req.getEventDescription());
+        data.setEndDate(req.getEndDate());
+        data.setUserId(req.getUserId());
         return repository.save(data);
     }
 
     // list all events
-    public List<TestData> listAllEvent() {
-        return repository.findAll();
+    public List<TestData> listAllEvent(TestData data) {
+        String userId = data.getUserId();
+        return findByUserId(userId);
     }
 
     // get all data by userId
@@ -43,12 +50,12 @@ public class TestDataService {
     }
 
     // list upcoming events
-    public List<TestData> findByEndDateBetween() {
+    public List<TestData> findByEndDateBetween(String userId) {
         Calendar calendar = Calendar.getInstance();
         Date now = calendar.getTime();
         calendar.add(Calendar.DAY_OF_MONTH, 5);
         Date fiveDaysLater = calendar.getTime();
-        return repository.findByEndDateBetween(now, fiveDaysLater);
+        return repository.findByUserIdAndEndDateBetween(userId, now, fiveDaysLater);
     }
 
     public List<TestData> findByEventNameLikeIgnoreCase(String name) {
